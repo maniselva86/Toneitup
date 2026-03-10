@@ -1,462 +1,469 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Gym Website Template</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-  <style>
-    .wow:first-child {
-      visibility: hidden;
-    }
-  </style>
-  
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tone It Up Gym</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#000;
+color:#fff;
+}
+
+header{
+position:fixed;
+width:100%;
+background:#000;
+z-index:999;
+}
+
+.container{
+width:90%;
+margin:auto;
+}
+
+.logo img{
+height:45px;
+}
+
+header .container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+}
+
+.nav ul{
+list-style:none;
+display:flex;
+gap:25px;
+}
+
+.nav ul li a{
+color:#fff;
+text-decoration:none;
+font-weight:500;
+}
+
+.home{
+height:100vh;
+background:url('images/gallery4.jpg') center/cover;
+display:flex;
+align-items:center;
+text-align:center;
+}
+
+.home h1{
+font-size:50px;
+margin:10px 0;
+}
+
+.home span{
+color:#ff2c2c;
+}
+
+section{
+padding:80px 0;
+}
+
+h2{
+text-align:center;
+margin-bottom:40px;
+}
+
+.about .content{
+display:flex;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.about .box{
+flex:1;
+background:#111;
+padding:25px;
+border-radius:10px;
+}
+
+.service .content{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.service .box{
+flex:1;
+}
+
+.btn{
+background:#ff2c2c;
+color:#fff;
+padding:12px 25px;
+text-decoration:none;
+display:inline-block;
+margin-top:20px;
+border-radius:5px;
+}
+
+.gallery .content{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+.price-package .content{
+display:flex;
+gap:30px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.price-package .box{
+background:#111;
+padding:25px;
+width:250px;
+border-radius:10px;
+text-align:center;
+}
+
+.price-tag{
+font-size:24px;
+color:#ff2c2c;
+margin-bottom:15px;
+}
+
+.contact .content{
+display:flex;
+flex-wrap:wrap;
+gap:40px;
+}
+
+.contact input,
+.contact textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:5px;
+}
+
+.contact button{
+background:#ff2c2c;
+border:none;
+padding:12px 20px;
+color:#fff;
+border-radius:5px;
+}
+
+footer{
+text-align:center;
+padding:30px 0;
+background:#111;
+margin-top:40px;
+}
+
+@media(max-width:768px){
+
+.home h1{
+font-size:35px;
+}
+
+.about .content,
+.service .content,
+.contact .content{
+flex-direction:column;
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
- 
- <!-- Start Header  -->
- <header>
- 	 <div class="container">
- 	 	<div class="logo">
- 	 		 <a href="">Fitness <span>Club</span></a>
- 	 	</div>
- 	 	<a href="javascript:void(0)" class="ham-burger">
- 	       <span></span>	
- 	       <span></span>
- 	 	</a>
- 	 	<div class="nav">
- 	 		<ul>
- 	 			<li><a href="#home">Home</a></li>
- 	 			<li><a href="#about">About</a></li>
- 	 			<li><a href="#service">Services</a></li>
- 	 			<li><a href="#classes">Classes</a></li>
- 	 			<li><a href="#schedule">Schedule</a></li>
- 	 			<li><a href="#price">Price</a></li>
- 	 			<li><a href="#contact">Contact</a></li>
- 	 		</ul>
- 	 	</div>
- 	 </div>
- </header>
- <!-- End Header  -->
 
-  <!-- Start Home -->
-  <section class="home wow flash" id="home">
-  	 <div class="container">
-  	 	  <h1 class="wow slideInLeft" data-wow-delay="1s">It's <span>gym</span> time. Let's go</h1>
-  	 	  <h1 class="wow slideInRight" data-wow-delay="1s">We are ready to <span>fit you</span></h1>
-  	 </div>
-  	  <!-- go down -->
-  	      <a href="#about" class="go-down">
-  	      	  <i class="fa fa-angle-down" aria-hidden="true"></i>
-  	      </a>
-  	  <!-- go down -->
+<header>
 
-  </section>
-  <!-- End Home -->
+<div class="container">
+
+<div class="logo">
+<img src="images/logo.png">
+</div>
+
+<div class="nav">
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#service">Services</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#price">Pricing</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+
+</div>
+
+</header>
 
 
- <!-- Start About -->
-  <section class="about" id="about">
-  	  <div class="container">
-  	  	  <div class="content">
-  	  	  	   <div class="box wow bounceInUp">
-  	  	  	   	   <div class="inner">
-  	  	  	   	   	   <div class="img">
-  	  	  	   	   	   	  <img src="images/about1.jpg" alt="about" />
-  	  	  	   	   	   </div>
-                       <div class="text">
-                       	   <h4>Free Consultation</h4>
-                       	   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                       </div>
-  	  	  	   	   </div>
-  	  	  	   </div>
-  	  	  	   	<div class="box wow bounceInUp" data-wow-delay="0.2s">
-  	  	  	   	   <div class="inner">
-  	  	  	   	   	   <div class="img">
-  	  	  	   	   	   	  <img src="images/about2.jpg" alt="about" />
-  	  	  	   	   	   </div>
-                       <div class="text">
-                       	   <h4>Best Training</h4>
-                       	   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                       </div>
-  	  	  	   	   </div>
-  	  	  	   </div>
-  	  	  	   <div class="box wow bounceInUp" data-wow-delay="0.4s">
-  	  	  	   	   <div class="inner">
-  	  	  	   	   	   <div class="img">
-  	  	  	   	   	   	  <img src="images/about3.jpg" alt="about" />
-  	  	  	   	   	   </div>
-                       <div class="text">
-                       	   <h4>Build Perfect Body</h4>
-                       	   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                       </div>
-  	  	  	   	   </div>
-  	  	  	   </div>
-  	  	  </div>
-  	  </div>
-  </section>
- <!-- End About -->
+<section class="home" id="home">
 
+<div class="container">
 
- <!-- Start Service -->
- <section class="service" id="service">
- 	<div class="container">
- 		 <div class="content">
- 		 	  <div class="text box wow slideInLeft">
-                  <h2>Services</h2>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                  <a href="" class="btn">Start Now</a>
- 		 	  </div>
- 		 	  <div class="accordian box wow slideInRight">
- 		 	  	    <div class="accordian-container active">
- 		 	  	    	<div class="head">
- 		 	  	    		<h4>Cardiovascular Equipment</h4>
- 		 	  	    		<span class="fa fa-angle-down"></span>
- 		 	  	    	</div>
- 		 	  	    	<div class="body">
- 		 	  	    		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
- 		 	  	    	</div>
- 		 	  	    </div>
- 		 	  	    <div class="accordian-container">
- 		 	  	    	<div class="head">
- 		 	  	    		<h4>Strength Training Equipment</h4>
- 		 	  	    		<span class="fa fa-angle-up"></span>
- 		 	  	    	</div>
- 		 	  	    	<div class="body">
- 		 	  	    		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
- 		 	  	    	</div>
- 		 	  	    </div>
- 		 	  	    <div class="accordian-container">
- 		 	  	    	<div class="head">
- 		 	  	    		<h4>Group Fitness Class</h4>
- 		 	  	    		<span class="fa fa-angle-up"></span>
- 		 	  	    	</div>
- 		 	  	    	<div class="body">
- 		 	  	    		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
- 		 	  	    	</div>
- 		 	  	    </div>
- 		 	  	    <div class="accordian-container">
- 		 	  	    	<div class="head">
- 		 	  	    		<h4>Other Services</h4>
- 		 	  	    		<span class="fa fa-angle-up"></span>
- 		 	  	    	</div>
- 		 	  	    	<div class="body">
- 		 	  	    		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
- 		 	  	    	</div>
- 		 	  	    </div>
- 		 	  </div>
- 		 </div>
- 	</div>
- </section>
- <!-- End Service -->
+<h1>Welcome to <span>Tone It Up</span></h1>
+<h1>Train With <span>Mr. Universe Athlete</span></h1>
 
-<!-- Start Classes -->
-<section class="classes" id="classes">
-	<div class="container">
-		 <div class="content">
-		 	  <div class="box img wow slideInLeft">
-		 	  	 <img src="images/class2.png" alt="classes" />
-		 	  </div>
-		 	  <div class="box text wow slideInRight">
-		 	  	 <h2>Our Classes</h2>
-		 	  	 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
-		 	  	<div class="class-items">
-		 	  	 <div class="item wow bounceInUp">
-                     <div class="item-img">
-                     	 <img src="images/class1.jpg" alt="classes" />
-                     	 <div class="price">
-                     	 	 $99
-                     	 </div>
-                     </div>
-                     <div class="item-text">
-                     	  <h4>Stretching Training</h4>
-                     	  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                     	  <a href="">Get Details</a>
-                     </div>
-		 	  	 </div>
-		 	  	 <div class="item wow bounceInUp">
-                     <div class="item-text">
-                     	  <h4>Stretching Training</h4>
-                     	  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                     	  <a href="">Get Details</a>
-                     </div>
-                     <div class="item-img">
-                     	 <img src="images/class1.jpg" alt="classes" />
-                     	 <div class="price">
-                     	 	 $99
-                     	 </div>
-                     </div>
-		 	  	 </div>
-		 	  	</div>
-		 	  </div>
-		 </div>
-	</div>
+<p>
+Train with Mr.Universe 1st international player and certified personal trainer.
+Sports Nutrition Specialist for Diabetic, PCOD / PCOS and Thyroid.
+</p>
+
+<a href="#price" class="btn">Join Now</a>
+
+</div>
+
 </section>
-<!-- End Classes -->
-
-<!-- Start Today -->
- <section class="start-today">
- 	<div class="container">
- 		 <div class="content">
- 		 	  <div class="box text wow slideInLeft">
- 		 	  	 <h2>Start Your Training Today</h2>
- 		 	  	 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
- 		 	  	 <a href="" class="btn">Start Now</a>
- 		 	  </div>
- 		 	  <div class="box img wow slideInRight">
- 		 	  	 <img src="images/gallery4.jpg" alt="start today" />
- 		 	  </div>
-
- 		 </div>
- 	</div>
- </section>
-<!-- End Start Today -->
-
-<!-- Start Schedule -->
-  <section class="schedule" id="schedule">
-  	 <div class="container">
-  	 	  <div class="content">
-  	 	  	   <div class="box text wow slideInLeft">
-  	 	  	   	   <h2>Classes Schedule</h2>
-  	 	  	   	   <p>
-  	 	  	   	   	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-  	 	  	   	   </p>
-  	 	  	   	   <img src="images/schedule1.png" alt="schedule" />
-  	 	  	   </div>
-  	 	  	   <div class="box timing wow slideInRight">
-                   <table class="table">
-                   	 <tbody>
-                   	 	<tr>
-                   	 		<td class="day">Monday</td>
-                   	 		<td><strong>9:00 AM</strong></td>
-                   	 		<td>Body Building <br/> 9:00 to 10:00 AM</td>
-                   	 		<td>Room No:210</td>
-                   	 	</tr>
-                   	 	<tr>
-                   	 		<td class="day">Tuesday</td>
-                   	 		<td><strong>9:00 AM</strong></td>
-                   	 		<td>Body Building <br/> 9:00 to 10:00 AM</td>
-                   	 		<td>Room No:210</td>
-                   	 	</tr>
-                   	 	<tr>
-                   	 		<td class="day">Wednesday</td>
-                   	 		<td><strong>9:00 AM</strong></td>
-                   	 		<td>Body Building <br/> 9:00 to 10:00 AM</td>
-                   	 		<td>Room No:210</td>
-                   	 	</tr>
-                   	 	<tr>
-                   	 		<td class="day">Thursday</td>
-                   	 		<td><strong>9:00 AM</strong></td>
-                   	 		<td>Body Building <br/> 9:00 to 10:00 AM</td>
-                   	 		<td>Room No:210</td>
-                   	 	</tr>
-                   	 	<tr>
-                   	 		<td class="day">Friday</td>
-                   	 		<td><strong>9:00 AM</strong></td>
-                   	 		<td>Body Building <br/> 9:00 to 10:00 AM</td>
-                   	 		<td>Room No:210</td>
-                   	 	</tr>
-                   	 	<tr>
-                   	 		<td class="day">Saturday</td>
-                   	 		<td><strong>9:00 AM</strong></td>
-                   	 		<td>Body Building <br/> 9:00 to 10:00 AM</td>
-                   	 		<td>Room No:210</td>
-                   	 	</tr>
-                   	 </tbody>
-                   </table>
-  	 	  	   </div>
-  	 	  </div>
-  	 </div>
-  </section>
-<!-- End Schedule -->
-
-<!-- Start Gallery -->
-  <section class="gallery" id="gallery">
-  	 <h2>Workout Gallery</h2>
-  	<div class="content">
-  		 <div class="box wow slideInLeft">
-  		 	 <img src="images/gallery1.jpg" alt="gallery" />
-  		 </div>
-  		 <div class="box wow slideInRight">
-  		 	 <img src="images/gallery2.jpg" alt="gallery" />
-  		 </div>
-  		 <div class="box wow slideInLeft">
-  		 	 <img src="images/gallery3.jpg" alt="gallery" />
-  		 </div>
-  		 <div class="box wow slideInRight">
-  		 	 <img src="images/gallery4.jpg" alt="gallery" />
-  		 </div>
-  	</div>
-  </section>
-<!-- End Gallery -->
-
- <!-- Start Price -->
-  <section class="price-package" id="price">
-  	 <div class="container">
-  	 	  <h2>Choose Your Package</h2>
-  	 	  <p class="title-p">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-  	 	  <div class="content">
-  	 	  	  <div class="box wow bounceInUp">
-  	 	  	  	  <div class="inner">
-  	 	  	  	  	   <div class="price-tag">
-  	 	  	  	  	   	  $59/Month
-  	 	  	  	  	   </div>
-  	 	  	  	  	   <div class="img">
-  	 	  	  	  	   	 <img src="images/price1.jpg" alt="price" />
-  	 	  	  	  	   </div>
-  	 	  	  	  	   <div class="text">
-  	 	  	  	  	   	  <h3>Body Building Training</h3>
-  	 	  	  	  	   	  <p>Get Free WiFi</p>
-  	 	  	  	  	   	  <p>Month to Month</p>
-  	 	  	  	  	   	  <p>No Time Restrictions</p>
-  	 	  	  	  	   	  <p>Gym and Cardio</p>
-  	 	  	  	  	   	  <p>Service Locker Rooms</p>
-  	 	  	  	  	   	  <a href="" class="btn">Join Now</a>
-  	 	  	  	  	   </div>
-  	 	  	  	  </div>
-  	 	  	  </div>
-  	 	  	  <div class="box wow bounceInUp" data-wow-delay="0.2s">
-  	 	  	  	  <div class="inner">
-  	 	  	  	  	   <div class="price-tag">
-  	 	  	  	  	   	  $69/Month
-  	 	  	  	  	   </div>
-  	 	  	  	  	   <div class="img">
-  	 	  	  	  	   	 <img src="images/price2.jpg" alt="price" />
-  	 	  	  	  	   </div>
-  	 	  	  	  	   <div class="text">
-  	 	  	  	  	   	  <h3>Body Building Training</h3>
-  	 	  	  	  	   	  <p>Get Free WiFi</p>
-  	 	  	  	  	   	  <p>Month to Month</p>
-  	 	  	  	  	   	  <p>No Time Restrictions</p>
-  	 	  	  	  	   	  <p>Gym and Cardio</p>
-  	 	  	  	  	   	  <p>Service Locker Rooms</p>
-  	 	  	  	  	   	  <a href="" class="btn">Join Now</a>
-  	 	  	  	  	   </div>
-  	 	  	  	  </div>
-  	 	  	  </div>
-  	 	  	  <div class="box wow bounceInUp" data-wow-delay="0.4s">
-  	 	  	  	  <div class="inner">
-  	 	  	  	  	   <div class="price-tag">
-  	 	  	  	  	   	  $99/Month
-  	 	  	  	  	   </div>
-  	 	  	  	  	   <div class="img">
-  	 	  	  	  	   	 <img src="images/price3.jpg" alt="price" />
-  	 	  	  	  	   </div>
-  	 	  	  	  	   <div class="text">
-  	 	  	  	  	   	  <h3>Body Building Training</h3>
-  	 	  	  	  	   	  <p>Get Free WiFi</p>
-  	 	  	  	  	   	  <p>Month to Month</p>
-  	 	  	  	  	   	  <p>No Time Restrictions</p>
-  	 	  	  	  	   	  <p>Gym and Cardio</p>
-  	 	  	  	  	   	  <p>Service Locker Rooms</p>
-  	 	  	  	  	   	  <a href="" class="btn">Join Now</a>
-  	 	  	  	  	   </div>
-  	 	  	  	  </div>
-  	 	  	  </div>
-  	 	  </div>
-  	 </div>
-  </section>
- <!-- End Price -->
-
- <!-- Start Contact -->
-  <section class="contact" id="contact">
-     <div class="container">
-        <div class="content">
-            <div class="box form wow slideInLeft">
-               <form>
-                  <input type="text" placeholder="Enter Name">
-                  <input type="text" placeholder="Enter Email">
-                  <input type="text" placeholder="Enter Mobile">
-                  <textarea placeholder="Enter Message"></textarea>
-                  <button type="submit">Send Message</button>
-               </form>
-            </div>
-            <div class="box text wow slideInRight">
-                 <h2>Get Connected with Gym</h2>
-                  <p class="title-p">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                  <div class="info">
-                      <ul>
-                          <li><span class="fa fa-map-marker"></span> Gali no 11, House no 11, Lahore</li>
-                          <li><span class="fa fa-phone"></span> 92 9999999999</li>
-                          <li><span class="fa fa-envelope"></span> info@gym.com</li>
-                      </ul>
-                  </div>
-                  <div class="social">
-                       <a href=""><span class="fa fa-facebook"></span></a>
-                       <a href=""><span class="fa fa-linkedin"></span></a>
-                       <a href=""><span class="fa fa-skype"></span></a>
-                       <a href=""><span class="fa fa-youtube-play"></span></a>
-                  </div>
-
-                  <div class="copy">
-                      PowerBy &copy; Ali Ahmad
-                  </div>
-            </div>
-        </div>
-     </div>
-  </section>
- <!-- End Contact -->
 
 
+<section class="about" id="about">
 
- <!-- jquery -->
+<div class="container">
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-	$(document).ready(function(){
+<h2>Why Choose Tone It Up</h2>
 
-      $(".ham-burger, .nav ul li a").click(function(){
-       
-        $(".nav").toggleClass("open")
+<div class="content">
 
-        $(".ham-burger").toggleClass("active");
-      })      
-      $(".accordian-container").click(function(){
-      	$(".accordian-container").children(".body").slideUp();
-      	$(".accordian-container").removeClass("active")
-      	$(".accordian-container").children(".head").children("span").removeClass("fa-angle-down").addClass("fa-angle-up")
-      	$(this).children(".body").slideDown();
-      	$(this).addClass("active")
-      	$(this).children(".head").children("span").removeClass("fa-angle-up").addClass("fa-angle-down")
-      })
+<div class="box">
+<h4>Professional Training</h4>
+<p>
+Train under a certified trainer and Mr.Universe international athlete.
+Programs designed for fat loss, muscle gain and strength.
+</p>
+</div>
 
-       $(".nav ul li a, .go-down").click(function(event){
-         if(this.hash !== ""){
+<div class="box">
+<h4>Sports Nutrition Guidance</h4>
+<p>
+Get professional nutrition plans designed for your body and goals.
+Expert support for healthy transformation.
+</p>
+</div>
 
-              event.preventDefault();
+<div class="box">
+<h4>Specialized Programs</h4>
+<p>
+Special fitness programs designed for Diabetic, PCOD / PCOS and Thyroid management.
+</p>
+</div>
 
-              var hash=this.hash; 
+</div>
 
-              $('html,body').animate({
-                scrollTop:$(hash).offset().top
-              },800 , function(){
-                 window.location.hash=hash;
-              });
+</div>
 
-              // add active class in navigation
-              $(".nav ul li a").removeClass("active")
-              $(this).addClass("active")
-         }
-      })
-})
+</section>
 
-</script>
-<script src="js/wow.min.js"></script>
-<script>
-    wow = new WOW(
-      {
-        animateClass: 'animated',
-        offset:       0,
-      }
-    );
-    wow.init();
-  </script>
+
+<section class="service" id="service">
+
+<div class="container">
+
+<h2>Our Services</h2>
+
+<div class="content">
+
+<div class="box">
+
+<h3>Strength Training</h3>
+<p>Build muscle and increase strength with professional workout programs.</p>
+
+<h3>Fat Loss Programs</h3>
+<p>Scientifically designed fat burning workouts and nutrition plans.</p>
+
+<h3>Personal Training</h3>
+<p>One-to-one training sessions with certified trainers.</p>
+
+<h3>Sports Nutrition</h3>
+<p>Customized diet plans for transformation and performance.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="gallery" id="gallery">
+
+<h2>Workout Gallery</h2>
+
+<div class="content">
+
+<img src="images/gallery1.jpg">
+<img src="images/gallery2.jpg">
+<img src="images/gallery3.jpg">
+<img src="images/gallery4.jpg">
+
+</div>
+
+</section>
+
+
+<section class="price-package" id="price">
+
+<div class="container">
+
+<h2>Membership Plans</h2>
+
+<div class="content">
+
+<div class="box">
+
+<div class="price-tag">₹1999</div>
+
+<h3>Monthly</h3>
+
+<p>Unlimited Gym Access</p>
+<p>Cardio + Strength Training</p>
+<p>Trainer Guidance</p>
+
+<a href="#" class="btn">Join Now</a>
+
+</div>
+
+
+<div class="box">
+
+<div class="price-tag">₹4999</div>
+
+<h3>3 Months</h3>
+
+<p>Unlimited Gym Access</p>
+<p>Trainer Guidance</p>
+<p>Nutrition Advice</p>
+
+<a href="#" class="btn">Join Now</a>
+
+</div>
+
+
+<div class="box">
+
+<div class="price-tag">₹7999</div>
+
+<h3>6 Months</h3>
+
+<p>Unlimited Gym Access</p>
+<p>Trainer Guidance</p>
+<p>Diet Plan</p>
+
+<a href="#" class="btn">Join Now</a>
+
+</div>
+
+
+<div class="box">
+
+<div class="price-tag">₹10999</div>
+
+<h3>Yearly</h3>
+
+<p>Unlimited Gym Access</p>
+<p>Trainer Guidance</p>
+<p>Complete Transformation Support</p>
+
+<a href="#" class="btn">Join Now</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="contact" id="contact">
+
+<div class="container">
+
+<h2>Contact Us</h2>
+
+<div class="content">
+
+<div class="box form">
+
+<form>
+
+<input type="text" placeholder="Enter Name">
+
+<input type="email" placeholder="Enter Email">
+
+<input type="text" placeholder="Enter Mobile">
+
+<textarea placeholder="Enter Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
+
+
+<div class="box">
+
+<h3>Tone It Up Gym</h3>
+
+<p>
+Train with Mr.Universe 1st international player and certified trainer.
+Sports Nutrition Specialist.
+</p>
+
+<p>
+Specialist in:
+</p>
+
+<ul>
+<li>Diabetic Fitness</li>
+<li>PCOD / PCOS Fitness</li>
+<li>Thyroid Management</li>
+</ul>
+
+<p>
+📍 Dollar City
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Tone It Up Fitness | Train Hard Stay Strong</p>
+
+</footer>
+
 </body>
 </html>
-
-
-
-
-
-
+```
