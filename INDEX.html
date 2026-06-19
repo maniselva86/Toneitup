@@ -1,0 +1,316 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .wrap { padding: 1.5rem 0; max-width: 700px; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .tab { padding: 7px 16px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); font-size: 14px; cursor: pointer; background: transparent; color: var(--color-text-secondary); transition: all 0.15s; }
+  .tab.active { background: var(--color-background-secondary); color: var(--color-text-primary); border-color: var(--color-border-primary); font-weight: 500; }
+  .tab:hover:not(.active) { background: var(--color-background-secondary); }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+  label { font-size: 13px; color: var(--color-text-secondary); display: block; margin-bottom: 6px; }
+  textarea { width: 100%; min-height: 120px; resize: vertical; font-size: 14px; padding: 10px 12px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: var(--color-background-secondary); color: var(--color-text-primary); font-family: var(--font-sans); line-height: 1.6; }
+  textarea:focus { outline: none; border-color: var(--color-border-primary); }
+  select { width: 100%; padding: 8px 12px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: var(--color-background-secondary); color: var(--color-text-primary); font-size: 14px; }
+  .btn { padding: 9px 20px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-primary); font-size: 14px; cursor: pointer; font-weight: 500; }
+  .btn:hover { background: var(--color-background-secondary); }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { background: var(--color-text-primary); color: var(--color-background-primary); border-color: transparent; }
+  .btn-primary:hover { opacity: 0.85; }
+  .row { display: flex; gap: 10px; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+  .result-box { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px; font-size: 14px; line-height: 1.8; color: var(--color-text-primary); min-height: 80px; white-space: pre-wrap; }
+  .status { font-size: 13px; color: var(--color-text-secondary); }
+  .status.loading { color: var(--color-text-info); }
+  .status.error { color: var(--color-text-danger); }
+  .upload-area { border: 1.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 2rem; text-align: center; cursor: pointer; transition: border-color 0.15s; }
+  .upload-area:hover { border-color: var(--color-border-primary); }
+  .upload-area p { font-size: 14px; color: var(--color-text-secondary); margin-top: 8px; }
+  .copy-btn { font-size: 12px; padding: 4px 10px; }
+  .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .result-label { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); }
+  .hidden { display: none; }
+  .img-preview { max-width: 100%; max-height: 200px; border-radius: var(--border-radius-md); margin-top: 10px; }
+  .section { margin-bottom: 1rem; }
+  .char-count { font-size: 12px; color: var(--color-text-tertiary); text-align: right; margin-top: 4px; }
+</style>
+
+<div class="wrap">
+  <h2 style="sr-only">Document Tools — Translate, OCR, Summarize</h2>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('translate')"><i class="ti ti-language" aria-hidden="true"></i> Translate</button>
+    <button class="tab" onclick="switchTab('ocr')"><i class="ti ti-scan" aria-hidden="true"></i> OCR</button>
+    <button class="tab" onclick="switchTab('summarize')"><i class="ti ti-file-text" aria-hidden="true"></i> Summarize</button>
+  </div>
+
+  <!-- TRANSLATE -->
+  <div id="tab-translate">
+    <div class="card">
+      <div class="section">
+        <label>Source text</label>
+        <textarea id="t-input" placeholder="Paste text to translate..." oninput="updateCount('t-input','t-count')"></textarea>
+        <div class="char-count" id="t-count">0 chars</div>
+      </div>
+      <div class="row">
+        <div style="flex:1;">
+          <label>From</label>
+          <select id="t-from">
+            <option value="auto">Auto detect</option>
+            <option value="English">English</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Hindi">Hindi</option>
+            <option value="French">French</option>
+            <option value="Spanish">Spanish</option>
+            <option value="German">German</option>
+            <option value="Arabic">Arabic</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Chinese">Chinese</option>
+          </select>
+        </div>
+        <div style="flex:1;">
+          <label>To</label>
+          <select id="t-to">
+            <option value="Tamil">Tamil</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="French">French</option>
+            <option value="Spanish">Spanish</option>
+            <option value="German">German</option>
+            <option value="Arabic">Arabic</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Chinese">Chinese</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" style="margin-top:18px" onclick="runTranslate()">Translate ↗</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="result-header">
+        <span class="result-label">Translation</span>
+        <button class="btn copy-btn" onclick="copyResult('t-result')"><i class="ti ti-copy" aria-hidden="true"></i> Copy</button>
+      </div>
+      <div class="result-box" id="t-result" style="color:var(--color-text-tertiary)">Translation will appear here...</div>
+      <div id="t-status" class="status" style="margin-top:8px"></div>
+    </div>
+  </div>
+
+  <!-- OCR -->
+  <div id="tab-ocr" class="hidden">
+    <div class="card">
+      <label>Upload image (screenshot, scan, photo of text)</label>
+      <div class="upload-area" id="ocr-drop" onclick="document.getElementById('ocr-file').click()" ondragover="event.preventDefault()" ondrop="handleDrop(event,'ocr')">
+        <i class="ti ti-photo-scan" style="font-size:32px;color:var(--color-text-tertiary)" aria-hidden="true"></i>
+        <p>Click to upload or drag & drop<br><span style="font-size:12px">PNG, JPG, JPEG, WEBP</span></p>
+      </div>
+      <input type="file" id="ocr-file" class="hidden" accept="image/*" onchange="handleFile(event,'ocr')">
+      <img id="ocr-preview" class="hidden img-preview" alt="Uploaded image preview">
+      <div class="row" style="margin-top:1rem">
+        <div style="flex:1">
+          <label>Language hint (optional)</label>
+          <select id="ocr-lang">
+            <option value="">Auto</option>
+            <option value="Tamil">Tamil</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="mixed">Mixed</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" style="margin-top:18px" onclick="runOCR()">Extract text ↗</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="result-header">
+        <span class="result-label">Extracted text</span>
+        <button class="btn copy-btn" onclick="copyResult('ocr-result')"><i class="ti ti-copy" aria-hidden="true"></i> Copy</button>
+      </div>
+      <div class="result-box" id="ocr-result" style="color:var(--color-text-tertiary)">Extracted text will appear here...</div>
+      <div id="ocr-status" class="status" style="margin-top:8px"></div>
+      <button class="btn" style="margin-top:10px;font-size:13px" id="ocr-to-translate" onclick="sendToTranslate()" style="display:none">Send to Translate →</button>
+    </div>
+  </div>
+
+  <!-- SUMMARIZE -->
+  <div id="tab-summarize" class="hidden">
+    <div class="card">
+      <div class="section">
+        <label>Document text</label>
+        <textarea id="s-input" placeholder="Paste your document or report text here..." style="min-height:160px" oninput="updateCount('s-input','s-count')"></textarea>
+        <div class="char-count" id="s-count">0 chars</div>
+      </div>
+      <div class="row">
+        <div style="flex:1">
+          <label>Summary style</label>
+          <select id="s-style">
+            <option value="concise">Concise (3–5 sentences)</option>
+            <option value="bullet">Bullet points</option>
+            <option value="detailed">Detailed paragraph</option>
+            <option value="executive">Executive summary</option>
+            <option value="tamil">Summary in Tamil</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" style="margin-top:18px" onclick="runSummarize()">Summarize ↗</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="result-header">
+        <span class="result-label">Summary</span>
+        <button class="btn copy-btn" onclick="copyResult('s-result')"><i class="ti ti-copy" aria-hidden="true"></i> Copy</button>
+      </div>
+      <div class="result-box" id="s-result" style="color:var(--color-text-tertiary)">Summary will appear here...</div>
+      <div id="s-status" class="status" style="margin-top:8px"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let ocrImageData = null;
+  let ocrImageType = null;
+
+  function switchTab(name) {
+    ['translate','ocr','summarize'].forEach(t => {
+      document.getElementById('tab-'+t).classList.add('hidden');
+      document.querySelectorAll('.tab')[['translate','ocr','summarize'].indexOf(t)].classList.remove('active');
+    });
+    document.getElementById('tab-'+name).classList.remove('hidden');
+    document.querySelectorAll('.tab')[['translate','ocr','summarize'].indexOf(name)].classList.add('active');
+  }
+
+  function updateCount(id, countId) {
+    const len = document.getElementById(id).value.length;
+    document.getElementById(countId).textContent = len.toLocaleString() + ' chars';
+  }
+
+  function setStatus(id, msg, type) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.className = 'status' + (type ? ' '+type : '');
+  }
+
+  function copyResult(id) {
+    const text = document.getElementById(id).textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = event.target.closest('button');
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.innerHTML = '<i class="ti ti-copy" aria-hidden="true"></i> Copy'; }, 1500);
+    });
+  }
+
+  async function callClaude(prompt, imageData, imageType) {
+    const content = [];
+    if (imageData) {
+      content.push({ type: 'image', source: { type: 'base64', media_type: imageType, data: imageData } });
+    }
+    content.push({ type: 'text', text: prompt });
+
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content }]
+      })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    return data.content.filter(b => b.type === 'text').map(b => b.text).join('');
+  }
+
+  async function runTranslate() {
+    const text = document.getElementById('t-input').value.trim();
+    if (!text) return;
+    const from = document.getElementById('t-from').value;
+    const to = document.getElementById('t-to').value;
+    const result = document.getElementById('t-result');
+    setStatus('t-status', 'Translating...', 'loading');
+    result.textContent = '';
+    try {
+      const fromStr = from === 'auto' ? 'automatically detect the source language and' : `translate from ${from} and`;
+      const prompt = `Please ${fromStr} translate the following text to ${to}. Return ONLY the translated text, nothing else:\n\n${text}`;
+      const out = await callClaude(prompt);
+      result.textContent = out;
+      result.style.color = 'var(--color-text-primary)';
+      setStatus('t-status', `Translated to ${to}`, '');
+    } catch(e) {
+      setStatus('t-status', 'Error: ' + e.message, 'error');
+    }
+  }
+
+  function handleDrop(e, type) {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file) loadImageFile(file, type);
+  }
+
+  function handleFile(e, type) {
+    const file = e.target.files[0];
+    if (file) loadImageFile(file, type);
+  }
+
+  function loadImageFile(file, type) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const b64 = e.target.result.split(',')[1];
+      const mime = file.type;
+      if (type === 'ocr') {
+        ocrImageData = b64;
+        ocrImageType = mime;
+        const preview = document.getElementById('ocr-preview');
+        preview.src = e.target.result;
+        preview.classList.remove('hidden');
+        document.getElementById('ocr-drop').querySelector('p').textContent = file.name;
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  async function runOCR() {
+    if (!ocrImageData) { setStatus('ocr-status', 'Please upload an image first.', 'error'); return; }
+    const lang = document.getElementById('ocr-lang').value;
+    const result = document.getElementById('ocr-result');
+    setStatus('ocr-status', 'Extracting text...', 'loading');
+    result.textContent = '';
+    try {
+      const langHint = lang ? ` The text may be in ${lang}.` : '';
+      const prompt = `Extract ALL text from this image exactly as it appears, preserving line breaks and structure.${langHint} Return ONLY the extracted text, nothing else.`;
+      const out = await callClaude(prompt, ocrImageData, ocrImageType);
+      result.textContent = out;
+      result.style.color = 'var(--color-text-primary)';
+      setStatus('ocr-status', 'Text extracted successfully', '');
+      document.getElementById('ocr-to-translate').style.display = 'inline-block';
+    } catch(e) {
+      setStatus('ocr-status', 'Error: ' + e.message, 'error');
+    }
+  }
+
+  function sendToTranslate() {
+    const text = document.getElementById('ocr-result').textContent;
+    document.getElementById('t-input').value = text;
+    updateCount('t-input', 't-count');
+    switchTab('translate');
+  }
+
+  async function runSummarize() {
+    const text = document.getElementById('s-input').value.trim();
+    if (!text) return;
+    const style = document.getElementById('s-style').value;
+    const result = document.getElementById('s-result');
+    setStatus('s-status', 'Summarizing...', 'loading');
+    result.textContent = '';
+    const styleMap = {
+      concise: 'Write a concise summary in 3 to 5 sentences.',
+      bullet: 'Write a summary as a clean bullet point list of key points.',
+      detailed: 'Write a detailed paragraph summary covering all main points.',
+      executive: 'Write an executive summary with key findings, decisions, and action items.',
+      tamil: 'Write a concise summary in Tamil language.'
+    };
+    try {
+      const prompt = `${styleMap[style]} Summarize the following document:\n\n${text}`;
+      const out = await callClaude(prompt);
+      result.textContent = out;
+      result.style.color = 'var(--color-text-primary)';
+      setStatus('s-status', 'Done', '');
+    } catch(e) {
+      setStatus('s-status', 'Error: ' + e.message, 'error');
+    }
+  }
+</script>
